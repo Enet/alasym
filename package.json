@@ -1,0 +1,32 @@
+{
+    "name": "alasym",
+    "version": "0.0.1",
+    "description": "Easy router a la symfony.",
+    "main": "index.js",
+    "dependencies": {
+        "js-yaml": "*"
+    },
+    "keywords": [
+        "router",
+        "match",
+        "url",
+        "symfony",
+        "node",
+        "param",
+        "case",
+        "method"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": {
+        "name": "Stepan Zhevak",
+        "email": "enet@protonmail.ch",
+        "url": "zhevak.name"
+    },
+    "repository": "",
+    "license": "GPLv3",
+    "engines": {
+        "node": ">=4.0.0"
+    }
+}
