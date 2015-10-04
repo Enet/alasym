@@ -24,7 +24,7 @@
         "email": "enet@protonmail.ch",
         "url": "zhevak.name"
     },
-    "repository": "",
+    "repository": "https://github.com/Enet/alasym",
     "license": "GPLv3",
     "engines": {
         "node": ">=4.0.0"
