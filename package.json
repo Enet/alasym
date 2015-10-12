@@ -1,6 +1,6 @@
 {
     "name": "alasym",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Easy router a la symfony.",
     "main": "index.js",
     "dependencies": {

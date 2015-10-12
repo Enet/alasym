@@ -1,6 +1,7 @@
 'use strict';
 
 let fs = require('fs'),
+    urlParser = require('url'),
     yaml = require('js-yaml');
 module.exports = {
     loadConfig: function (filePath) {
@@ -32,9 +33,9 @@ module.exports = {
                         url = url.slice(url[0] === '/' ? 1 : 0, (url.length > 1 && url[url.length - 1] === '/') ? -1 : undefined);
 
                         let options = configRoute.options || {};
-                        options.casesensitive = options.casesensitive || false;
+                        options.caseSensitive = options.caseSensitive || false;
 
-                        if (!options.casesensitive) url = url.toLowerCase();
+                        if (!options.caseSensitive) url = url.toLowerCase();
                         url = url.split('/');
 
                         configRoute.regexps = configRoute.regexps || {};
@@ -44,7 +45,7 @@ module.exports = {
                                 paramName = paramName.substr(1);
                                 params.push({
                                     name: paramName,
-                                    pattern: new RegExp(configRoute.regexps[paramName] || '.*', options.casesensitive ? '' : 'i')
+                                    pattern: new RegExp(configRoute.regexps[paramName] || '.*', options.caseSensitive ? '' : 'i')
                                 });
                             } else {
                                 params.push({
@@ -72,24 +73,37 @@ module.exports = {
         });
     },
 
-    matchURL: function (routes, method, url) {
+    matchURL: function (routes, url, method) {
+        method = (method || 'GET').toUpperCase() + '';
+        url = urlParser.parse(url + '').pathname;
+        routes = routes || {};
+
         for (let r in routes) {
             let route = routes[r],
                 matches;
-            if (matches = checkURL(route, method + '', url + '')) {
+            if (matches = checkURL(route, url, method)) {
                 for (let d in route.defaults) {
                     matches[d] = matches[d] || route.defaults[d];
                 }
-                return Object.assign({matches}, route);
+                return {
+                    name: route.name,
+                    url,
+                    method,
+                    matches,
+                    options: Object.assign({}, route.options),
+                    destination: typeof route.destination === 'object' ?
+                        Object.assign({}, route.destination) :
+                        route.destination
+                };
             }
         }
         return null;
     }
 };
 
-function checkURL (route, method, url) {
+function checkURL (route, url, method) {
     url = url.slice(url[0] === '/' ? 1 : 0, (url.length > 1 && url[url.length - 1] === '/') ? -1 : undefined);
-    if (!route.options.casesensitive) url = url.toLowerCase();
+    if (!route.options.caseSensitive) url = url.toLowerCase();
 
     let splitted = url.split('/'),
         matches = {};
