@@ -15,7 +15,7 @@ This one returns a promise, just parses a content and then passes to function re
 **returns promise<sup>A+</sup>**
 
 ## matchURL(routes<sup>{ }</sup>, url<sup>abc</sup>, method<sup>abc</sup>)
-It is the most interesting function, which matches current **url<sup>abc</sup>** and **method<sup>abc</abc>** with already parsed config. It returns an object of a route or null (if nothing is matched). Method is optional parameter, by default it is equal GET.
+It is the most interesting function, which matches current **url<sup>abc</sup>** and **method<sup>abc</sup>** with already parsed config. It returns an object of a route or null (if nothing is matched). Method is optional parameter, by default it is equal GET.
 
 **returns route<sup>{ }</sup> or null<sup>0</sup>**
 
@@ -65,4 +65,4 @@ alasym.loadConfig('routing.yml')
         console.error('Something have gone wrong!', error);
     });
 ```
-And this is [another example](https://github.com/Enet/demo-es2015), how to use alasym in a real project.
+And here is [an another example](https://github.com/Enet/demo-es2015), how to use alasym in a real project.
