@@ -62,7 +62,7 @@ alasym.loadConfig('routing.yml')
         route = alasym.matchURL(routes, '/path/to/void'); // null
     })
     .catch(error => {
-        console.error('Something have gone wrong!', error);
+        console.error('Something has gone wrong!', error);
     });
 ```
 And here is [an another example](https://github.com/Enet/demo-es2015), how to use alasym in a real project.
