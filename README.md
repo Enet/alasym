@@ -3,7 +3,7 @@ It is a tool for routing a la symfony (PHP framework). Alasym is able to parse y
 
 This module is not a copy of symfony routing, just has a similar syntax. It supports methods, parameters (including regular expressions for ones), default values and one option.
 
-The module has only three methods.
+The module has only four methods.
 ## loadConfig(filePath<sup>abc</sup>)
 This method returns a promise, loads file and calls **parseConfig<sup>( )</sup>**. Resolve gets **routes<sup>{ }</sup>** - an object, containing parsed routes.
 
@@ -18,6 +18,11 @@ This one returns a promise, just parses a content and then passes to function re
 It is the most interesting function, which matches current **url<sup>abc</sup>** and **method<sup>abc</sup>** with already parsed config. It returns an object of a route or null (if nothing is matched). Method is optional parameter, by default it is equal GET.
 
 **returns route<sup>{ }</sup> or null<sup>0</sup>**
+
+## generateURL(route<sup>{ }</sup>, params<sup>{ }</sup>)
+Returns URL, which is generated using **params<sup>{ }</sup>** and which satisfies route's pattern. Remember, that the first argument is an object, but not a string. If required parameter is missing in **params<sup>{ }</sup>**, then empty string is used.
+
+**returns url<sup>abc</sup>**
 
 ## Example
 There is one exhaustive example below:

@@ -75,7 +75,7 @@ module.exports = {
 
     matchURL: function (routes, url, method) {
         method = (method || 'GET').toUpperCase() + '';
-        url = urlParser.parse(url + '').pathname;
+        url = urlParser.parse(url + '').pathname || '';
         routes = routes || {};
 
         for (let r in routes) {
@@ -98,6 +98,16 @@ module.exports = {
             }
         }
         return null;
+    },
+
+    generateURL: function (route, userParams) {
+        let url = [''],
+            routeParams = route ? route.params || [] : [];
+        userParams = userParams || {};
+        routeParams.forEach(routeParam => {
+            url.push(routeParam.name ? userParams[routeParam.name] || '' : routeParam.pattern);
+        });
+        return url.join('/');
     }
 };
 
