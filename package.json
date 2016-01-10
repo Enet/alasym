@@ -1,6 +1,6 @@
 {
     "name": "alasym",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Easy router a la symfony.",
     "main": "index.js",
     "dependencies": {
@@ -25,7 +25,7 @@
         "url": "zhevak.name"
     },
     "repository": "https://github.com/Enet/alasym",
-    "license": "GPLv3",
+    "license": "GPL-3.0",
     "engines": {
         "node": ">=4.0.0"
     }
