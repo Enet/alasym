@@ -1,4 +1,7 @@
 # alasym
+**DON'T USE THE PACKAGE. IT'S DEPRECATED!!!
+USE [russian-router](https://github.com/Enet/russian-router) INSTEAD.**
+
 It is a tool for routing a la symfony (PHP framework). Alasym is able to parse your routing.yml and match route for URL. At this time the code works only on Node.js environment.
 
 This module is not a copy of symfony routing, just has a similar syntax. It supports methods, parameters (including regular expressions for ones), default values and one option.
